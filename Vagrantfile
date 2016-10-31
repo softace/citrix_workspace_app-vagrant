@@ -70,10 +70,15 @@ Vagrant.configure("2") do |config|
     apt-get install -y firefox
   SHELL
   # https://www.citrix.dk/downloads/citrix-receiver/linux/receiver-for-linux-latest.html
+  ica_client_version = "13.4.0.10109380_amd64"
+  ica_client_file = "icaclient_#{ica_client_version}.deb"
+  config.vm.provision "file", source: ica_client_file, destination: ica_client_file
   config.vm.provision "shell", inline: <<-SHELL
-    apt-get install -y libwebkitgtk-1.0-0
-    dpkg -i icaclient_13.4.0.10109380_amd64.deb
+    apt-get install -y xdg-utils libwebkitgtk-1.0-0 libxmu6 libxpm4
+    dpkg -i #{ica_client_file}
     cd /opt/Citrix/ICAClient/keystore/cacerts/
-    ln -s /usr/share/ca-certificates/mozilla/GlobalSign_Root_CA* .
+    ln -s /usr/share/ca-certificates/mozilla/* .
+    c_rehash /opt/Citrix/ICAClient/keystore/cacerts/
+    xdg-mime default wfica.desktop application/x-ica
   SHELL
 end
