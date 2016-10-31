@@ -10,6 +10,14 @@ and you can run it from within that sandbox
 Build the box
 =============
 
+Downdload the Citrix receiver client from https://www.citrix.dk/downloads/citrix-receiver/linux/receiver-for-linux-latest.html
+Select
+
+* Debian Packages
+  * Full Package (Self-service support) Receiver for Linux (x86_64)
+
+and put the file in this directory
+
 ```
 vagrant up
 ```
