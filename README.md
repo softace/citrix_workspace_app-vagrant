@@ -16,7 +16,7 @@ Select
 * Debian Packages
   * Full Package (Self-service support) Receiver for Linux (x86_64)
 
-and put the file in this directory
+and put the file in this directory. Then run
 
 ```
 vagrant up
