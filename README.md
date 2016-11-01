@@ -27,7 +27,7 @@ Use the citrix client
 =====================
 
 ```
-vagrant ssh -- -X firefox
+vagrant ssh -- -X firefox -no-remote
 ```
 
 Then visit your citrix server url
