@@ -1,10 +1,10 @@
 Sandbox for Citrix client
 =========================
 
-If you don't trust the binaries of Citrix (and you shouldn't when you
-work in an enterprise organisation that takes security seriously),
-then here is a Vagrantbox that installs the citrix client and firefox
-and you can run it from within that sandbox
+If you don't trust the closed source binaries of Citrix (and you
+shouldn't when you work in an enterprise organisation that takes
+security seriously), then here is a Vagrantbox that installs the
+citrix client and firefox and you can run it from within that sandbox
 
 
 Build the box
