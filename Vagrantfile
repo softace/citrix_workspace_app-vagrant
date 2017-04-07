@@ -1,6 +1,13 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# https://www.citrix.dk/downloads/citrix-receiver/linux/receiver-for-linux-latest.html
+ica_client_version = "13.5.0.10185126_amd64"
+ica_client_version_sha256 = "8c71b4f0a533bd33324e1f09c497e44fa4bdab7600006bf5ff76abd29b97d10f"
+ica_client_file = "icaclient_#{ica_client_version}.deb"
+sha256 = Digest::SHA256.file ica_client_file
+raise "SHA256 mismatch" unless sha256.hexdigest == ica_client_version_sha256
+
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
@@ -69,9 +76,6 @@ Vagrant.configure("2") do |config|
     apt-get upgrade
     apt-get install -y firefox
   SHELL
-  # https://www.citrix.dk/downloads/citrix-receiver/linux/receiver-for-linux-latest.html
-  ica_client_version = "13.4.0.10109380_amd64"
-  ica_client_file = "icaclient_#{ica_client_version}.deb"
   config.vm.provision "file", source: ica_client_file, destination: ica_client_file
   config.vm.provision "shell", inline: <<-SHELL
 apt-get install -y xdg-utils libwebkitgtk-1.0-0 libxmu6 libxpm4
