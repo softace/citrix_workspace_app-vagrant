@@ -74,11 +74,11 @@ Vagrant.configure("2") do |config|
   ica_client_file = "icaclient_#{ica_client_version}.deb"
   config.vm.provision "file", source: ica_client_file, destination: ica_client_file
   config.vm.provision "shell", inline: <<-SHELL
-    apt-get install -y xdg-utils libwebkitgtk-1.0-0 libxmu6 libxpm4
-    dpkg -i #{ica_client_file}
-    cd /opt/Citrix/ICAClient/keystore/cacerts/
-    ln -s /usr/share/ca-certificates/mozilla/* .
-    c_rehash /opt/Citrix/ICAClient/keystore/cacerts/
-    xdg-mime default wfica.desktop application/x-ica
+apt-get install -y xdg-utils libwebkitgtk-1.0-0 libxmu6 libxpm4
+dpkg -i #{ica_client_file}
+cd /opt/Citrix/ICAClient/keystore/cacerts/
+ln -s /usr/share/ca-certificates/mozilla/* .
+c_rehash /opt/Citrix/ICAClient/keystore/cacerts/
+xdg-mime default wfica.desktop application/x-ica
   SHELL
 end
