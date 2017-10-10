@@ -2,9 +2,9 @@
 # vi: set ft=ruby :
 
 # https://www.citrix.dk/downloads/citrix-receiver/linux/receiver-for-linux-latest.html
-ica_client_version = "13.5.0.10185126_amd64"
-ica_client_version_sha256 = "8c71b4f0a533bd33324e1f09c497e44fa4bdab7600006bf5ff76abd29b97d10f"
-ica_client_file = "icaclient_#{ica_client_version}.deb"
+ica_client_version = "13.7.0.10276927"
+ica_client_version_sha256 = "610ad493f910dfb49549717c29a4812b5c216270fc8b03011fc09e8d56b92448"
+ica_client_file = "icaclient_#{ica_client_version}_amd64.deb"
 sha256 = Digest::SHA256.file ica_client_file
 raise "SHA256 mismatch" unless sha256.hexdigest == ica_client_version_sha256
 
@@ -83,6 +83,5 @@ dpkg -i #{ica_client_file}
 cd /opt/Citrix/ICAClient/keystore/cacerts/
 ln -s /usr/share/ca-certificates/mozilla/* .
 c_rehash /opt/Citrix/ICAClient/keystore/cacerts/
-xdg-mime default wfica.desktop application/x-ica
   SHELL
 end
