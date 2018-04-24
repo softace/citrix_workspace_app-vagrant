@@ -2,11 +2,11 @@
 # vi: set ft=ruby :
 
 # https://www.citrix.dk/downloads/citrix-receiver/linux/receiver-for-linux-latest.html
-ica_client_version = "13.7.0.10276927"
-ica_client_version_sha256 = "610ad493f910dfb49549717c29a4812b5c216270fc8b03011fc09e8d56b92448"
+ica_client_version = "13.9.1.6"
+ica_client_version_sha256 = "F3D20E4A1A0374B231BE12103B4CB49FD42DA3C973608C70C99BEB896057A863"
 ica_client_file = "icaclient_#{ica_client_version}_amd64.deb"
 sha256 = Digest::SHA256.file ica_client_file
-raise "SHA256 mismatch" unless sha256.hexdigest == ica_client_version_sha256
+raise "SHA256 mismatch" unless sha256.hexdigest == ica_client_version_sha256.downcase
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
