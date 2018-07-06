@@ -2,8 +2,8 @@
 # vi: set ft=ruby :
 
 # https://www.citrix.dk/downloads/citrix-receiver/linux/receiver-for-linux-latest.html
-ica_client_version = "13.9.1.6"
-ica_client_version_sha256 = "F3D20E4A1A0374B231BE12103B4CB49FD42DA3C973608C70C99BEB896057A863"
+ica_client_version = "13.10.0.20"
+ica_client_version_sha256 = "7F41375DBC714B749EBCD653F96A74DCB615A576DA0ADA8BEF92E2FD5D617291"
 ica_client_file = "icaclient_#{ica_client_version}_amd64.deb"
 sha256 = Digest::SHA256.file ica_client_file
 raise "SHA256 mismatch" unless sha256.hexdigest == ica_client_version_sha256.downcase
