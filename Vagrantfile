@@ -5,7 +5,7 @@
 ica_client_version = "13.10.0.20"
 ica_client_version_sha256 = "7F41375DBC714B749EBCD653F96A74DCB615A576DA0ADA8BEF92E2FD5D617291"
 ica_client_file = "icaclient_#{ica_client_version}_amd64.deb"
-sha256 = Digest::SHA256.file ica_client_file
+sha256 = Digest::SHA256.file File.join File.dirname(__FILE__), ica_client_file
 raise "SHA256 mismatch" unless sha256.hexdigest == ica_client_version_sha256.downcase
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
