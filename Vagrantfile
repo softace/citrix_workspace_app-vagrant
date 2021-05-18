@@ -1,9 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# https://www.citrix.dk/downloads/citrix-receiver/linux/receiver-for-linux-latest.html
-ica_client_version = "13.10.0.20"
-ica_client_version_sha256 = "7F41375DBC714B749EBCD653F96A74DCB615A576DA0ADA8BEF92E2FD5D617291"
+ica_client_version = "21.4.0.11"
+ica_client_version_sha256 = "D760ED6E59EB5B47A7090440E3F8A98118E9EBE383CD0B9ED37215691D864265"
 ica_client_file = "icaclient_#{ica_client_version}_amd64.deb"
 sha256 = Digest::SHA256.file File.join File.dirname(__FILE__), ica_client_file
 raise "SHA256 mismatch" unless sha256.hexdigest == ica_client_version_sha256.downcase
@@ -78,9 +77,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: ica_client_file, destination: ica_client_file
   config.vm.provision "shell", inline: <<-SHELL
 apt-get install -y xdg-utils libwebkitgtk-1.0-0 libxmu6 libxpm4
-dpkg -i #{ica_client_file}
-cd /opt/Citrix/ICAClient/keystore/cacerts/
-ln -s /usr/share/ca-certificates/mozilla/* .
-c_rehash /opt/Citrix/ICAClient/keystore/cacerts/
+DEBIAN_FRONTEND=noninteractive dpkg -i #{ica_client_file}
   SHELL
 end
