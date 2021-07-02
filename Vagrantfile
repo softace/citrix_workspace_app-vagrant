@@ -1,8 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-ica_client_version = "21.4.0.11"
-ica_client_version_sha256 = "D760ED6E59EB5B47A7090440E3F8A98118E9EBE383CD0B9ED37215691D864265"
+ica_client_version = "21.6.0.28"
+ica_client_version_sha256 = "90f7949f37e1183801fee299cf426a4d5d90ad4776200db38c0ad1be8298f08d"
 ica_client_file = "icaclient_#{ica_client_version}_amd64.deb"
 sha256 = Digest::SHA256.file File.join File.dirname(__FILE__), ica_client_file
 raise "SHA256 mismatch" unless sha256.hexdigest == ica_client_version_sha256.downcase
