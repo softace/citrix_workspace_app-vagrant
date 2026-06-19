@@ -1,8 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-ica_client_version = "21.6.0.28"
-ica_client_version_sha256 = "90f7949f37e1183801fee299cf426a4d5d90ad4776200db38c0ad1be8298f08d"
+ica_client_version = "26.01.0.150"
+ica_client_version_sha256 = "7ce8c3a32e1e9d698e7bca349ad582136040774a49e35f47e529430918f8b94a"
 ica_client_file = "icaclient_#{ica_client_version}_amd64.deb"
 sha256 = Digest::SHA256.file File.join File.dirname(__FILE__), ica_client_file
 raise "SHA256 mismatch" unless sha256.hexdigest == ica_client_version_sha256.downcase
@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
   # https://docs.vagrantup.com.
 
   # https://app.vagrantup.com/ubuntu
-  config.vm.box = "ubuntu/bionic64"
+  config.vm.box = "ubuntu/jammy64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -37,6 +37,8 @@ Vagrant.configure("2") do |config|
   # Bridged networks make the machine appear as another physical device on
   # your network.
   # config.vm.network "public_network"
+
+  config.ssh.forward_x11 = true
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
@@ -72,7 +74,18 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
     apt-get upgrade
-    apt-get install -y firefox
+    apt-get install -y \
+libice6 \
+libgtk2.0-0 \
+libsm6 \
+libxmu6 \
+libxpm4 \
+libasound2 \
+libidn12 \
+libspeexdsp1 \
+libva2 \
+net-tools \
+firefox
   SHELL
   config.vm.provision "file", source: ica_client_file, destination: ica_client_file
   config.vm.provision "shell", inline: <<-SHELL
