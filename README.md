@@ -4,7 +4,7 @@ Sandbox for Citrix Workspace App
 If you don't trust the closed source binaries of Citrix (and you
 shouldn't when you work in an enterprise organisation that takes
 security seriously), then here is a Vagrantbox that installs the
-citrix software and firefox and you can run it from within that sandbox
+citrix software and firefox and you can run it from within that sandbox.
 
 
 Build the box
@@ -32,7 +32,7 @@ Use the citrix client
 =====================
 
 ```
-vagrant ssh -- -X firefox -no-remote
+vagrant ssh -c 'firefox --no-remote'
 ```
 
 Then visit your citrix server url

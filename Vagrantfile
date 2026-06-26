@@ -75,21 +75,17 @@ Vagrant.configure("2") do |config|
     apt-get update
     apt-get upgrade
     apt-get install -y \
-libice6 \
-libgtk2.0-0 \
-libsm6 \
-libxmu6 \
-libxpm4 \
-libasound2 \
-libidn12 \
-libspeexdsp1 \
-libva2 \
+firefox \
 net-tools \
-firefox
+xdg-utils \
+
+  SHELL
+  config.vm.provision "shell", inline: <<-SHELL
+  # Snap changes the $HOME path, so the fallback file ~/.Xauthority does not exists inside snap, so we must set XAUTHORITY.
+echo 'export XAUTHORITY=$HOME/.Xauthority' >> /home/vagrant/.profile
   SHELL
   config.vm.provision "file", source: ica_client_file, destination: ica_client_file
   config.vm.provision "shell", inline: <<-SHELL
-apt-get install -y xdg-utils libwebkitgtk-1.0-0 libxmu6 libxpm4
-DEBIAN_FRONTEND=noninteractive dpkg -i #{ica_client_file}
+    DEBIAN_FRONTEND=noninteractive apt-get install -y ./#{ica_client_file}
   SHELL
 end
